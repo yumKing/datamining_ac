@@ -1,2 +1,6 @@
 数据挖掘实战
 1、电力窃漏电用户自动识别
+	1、数据抽取 ---data_extract.py
+	2、数据探索与预处理 ---data_pretreatment.py
+	3、建模 ---data_model.py
+	4、预测 ---data_predict.py
