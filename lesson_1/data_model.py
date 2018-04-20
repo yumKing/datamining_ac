@@ -2,7 +2,7 @@ import pandas as pd
 from random import shuffle  # 导入随机函数，用来打乱数据
 
 datafile = 'data/model.xls'
-data = pd.read_excel(datafile, header=None)
+data = pd.read_excel(datafile)
 data = data.as_matrix()  # 将表格转为矩阵
 shuffle(data)
 
@@ -23,7 +23,7 @@ net.add(Activation('relu'))  # 隐藏层使用relu激活函数
 net.add(Dense(input_dim=10, units=1))  # 添加隐藏层(10节点)到输出层(1节点)的链接
 net.add(Activation('sigmoid'))  # 输出层使用sigmoid激活函数
 # 编译模型，使用adam方法求解
-net.compile(loss='binary_crossentropy', optimizer='adam')
+net.compile(loss='binary_crossentropy', optimizer='adam',metrics=['accuracy'])
 # 训练模型 循环n次
 net.fit(train[:, :3], train[:, 3], epochs=100, batch_size=1)
 # 保存模型
