@@ -17,7 +17,7 @@ train = data[:int(len(data) * p), :]
 test = data[int(len(data) * p):, :]
 
 # 生成的模型路径
-netfile = 'data/net.model'
+netfile = 'data/net.pkl'
 net = Sequential()  # 建立神经网络
 net.add(Dense(input_dim=3, units=10))  # 添加输入层(3节点)到隐藏层(10节点)的链接
 net.add(Activation('relu'))  # 隐藏层使用relu激活函数
@@ -28,7 +28,7 @@ net.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 # 训练模型 循环n次
 net.fit(train[:, :3], train[:, 3], epochs=100, batch_size=1)
 # 保存模型
-net.save_weights(netfile)
+net.save(netfile)
 
 # 预测结果变形
 # keras 用predict给出预测概率，predict_classes给出预测类别，预测结果是n*1维数组
