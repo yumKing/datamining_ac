@@ -12,4 +12,6 @@
 	3、建模 ---data_model.py
 		1、数据划分:对专家样本20%测试样本，80%训练样本，其中使用随机打乱函数来分配
 		2、建立LM神经网络模型
-	4、预测 ---data_predict.py
+		3、CART决策树
+	4、模型评价 ---model_evaluate.py
+	5、预测 ---data_predict.py
