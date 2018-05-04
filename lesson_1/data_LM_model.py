@@ -4,7 +4,7 @@ from random import shuffle  # 导入随机函数，用来打乱数据
 from keras.models import Sequential  # 导入神经网络初始化函数
 from keras.layers.core import Dense, Activation  # 导入神经网络层函数，激活函数
 # 混淆矩阵可视化结果
-from lesson_1.cm_plot import *
+import cm_plot
 
 datafile = 'data/model.xls'
 data = pd.read_excel(datafile)
@@ -34,4 +34,4 @@ net.save(netfile)
 # keras 用predict给出预测概率，predict_classes给出预测类别，预测结果是n*1维数组
 predict_result = net.predict_classes(train[:, :3]).reshape(len(train))
 
-cm_plot(train[:, 3], predict_result).show()
+cm_plot.cm_plot(train[:, 3], predict_result).show()
