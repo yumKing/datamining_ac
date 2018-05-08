@@ -7,19 +7,19 @@ def cm_plot(y, yp):
     import matplotlib.pyplot as plt
     # 画混淆矩阵图
     # Create custom colormaps
-    cdict = {'red': ((0.0, 1.0, 1.0),   # Full red at the first stop
-                     (0.5, 0.0, 0.0),   # No red at second stop
-                     (1.0, 1.0, 1.0)),  # Full red at final stop
-             'green': ((0.0, 0.0, 0.0),  # No green at all stop
+    cdict = {'red': [(0.0, 0.0, 0.0),   # Full red at the first stop
+                     (0.5, 1.0, 1.0),   # No red at second stop
+                     (1.0, 1.0, 1.0)],  # Full red at final stop
+             'green': [(0.0, 0.0, 0.0),  # No green at all stop
                        (0.5, 0.0, 0.0),
-                       (1.0, 0.0, 0.0)),
-             'blue': ((0.0, 0.0, 0.0),   # No blue at first stop
-                      (0.5, 1.0, 1.0),   # Full blue at second stop
-                      (1.0, 0.0, 0.0))}  # No blue at final stop
-
+                       (1.0, 0.0, 0.0)],
+             'blue': [(0.0, 0.0, 0.0),   # No blue at first stop
+                      (0.5, 0.0, 0.0),   # Full blue at second stop
+                      (1.0, 1.0, 1.0)]}  # No blue at final stop
+    colorlist = ['#5fd9cd','#eaf786','#ffb5a1','#b8ffb8','#b8f4ff']
     from matplotlib.colors import LinearSegmentedColormap
-    cmap = LinearSegmentedColormap('Rd_Bl_Rd', cdict, 256)
-
+    # cmap = LinearSegmentedColormap('Rd_Bl_Gr', cdict, 256)
+    cmap = LinearSegmentedColormap.from_list('mylist',colorlist,gamma=2)
     # plt.matshow(cm, cmap=plt.get_cmap('Greens'), fignum=1)
     plt.matshow(cm, cmap=cmap, fignum=1)
     plt.colorbar()
