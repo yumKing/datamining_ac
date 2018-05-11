@@ -34,7 +34,7 @@ data = data[['L','R','F','M','C']]
 
 # =================数据标准化： 使用标准差标准化===================
 # mean函数计算每一列的平均值，std函数计算每一列的标准差 ,
-# axis表示以列或行为轴心 ，0：行，1：列
+# axis表示以列或行为轴心 ，0：纵向，1：横向
 data = (data - data.mean(axis=0))/data.std(axis=0)
 data = data.round(2)
 # data.columns = ['Z'+i for i in data.columns]
