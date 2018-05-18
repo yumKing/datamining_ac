@@ -7,6 +7,70 @@ pandas 0.22.0
 matplotlib 2.0.2
 numpy 1.14.2
 
+编辑工具:
+sublime text 3
+
+调试工具:pdb
+pdb这个功能好牛啊，可以在命令行设置也可以在程序里用语句设置断点 命令行：$ python -m pdb 1.py 程序里： 引入pdb包 import pdb def main(): i, sum = 1, 0 for i in xrange(100): sum = sum + i pdb.set_trace() print sum if __name__ == '__main__': main() 命令 | 用途 break 或 b 设置断点 continue 或 c 继续执行程序 list 或 l 查看当前行的代码段 step 或 s 进入函数 return 或 r 执行代码直到从当前函数返回 exit 或 q 中止并退出 next 或 n 执行下一行 pp 打印变量的值 help 帮助
+首先你选择运行的 py
+python -m pdb myscript.py
+(Pdb) 会自动停在第一行，等待调试,这时你可以看看 帮助
+(Pdb) h
+    说明下这几个关键 命令>断点设置
+   (Pdb)b  10 #断点设置在本py的第10行
+   或(Pdb)b  ots.py:20 #断点设置到 ots.py第20行
+   删除断点（Pdb）b #查看断点编号
+            (Pdb)cl 2 #删除第2个断点
+>运行
+    (Pdb)n #单步运行
+    (Pdb)s #细点运行 也就是会下到，方法
+    (Pdb)c #跳到下个断点
+>查看
+    (Pdb)p param #查看当前 变量值
+    (Pdb)l #查看运行到某处代码
+    (Pdb)a #查看全部栈内变量>如果是在 命令行里的调试为：
+import pdb
+def tt():
+    pdb.set_trace()
+    for i in range(1, 5):
+        print i>>> tt()
+#这里支持 n p c 而已
+> <stdin>(3)tt()
+(Pdb) n
+--------------------------------------------------------
+附一些有用的调试命令:
+w(here) 显式当前堆栈结构。往下的是新的，就像X86构架中的那样。
+d(own) 移向新的一帧
+u(p) 移向旧的一帧
+b(reak) [([filename:]lineno | function) [, condition] ]
+如果没有指定文件名则使用当前文件
+condition是一个字符串，必须等价于 true
+The condition argument, if present, is a string which must
+evaluate to true in order for the breakpoint to be honored.
+tbreak [([filename:]lineno | function) [, condition] ]
+临时的breakpoint
+cl(ear) [bpnumber [bpnumber ...]]
+空格进行分割，清除这些断点
+disable bpnumber [bpnumber ...]
+disable 断点，可以enable之后
+ignore bpnumber count
+设置某个断点的count，当count为0的时候断点状态为active，count不为0的时候每一次进入断点时候count自减
+condition bpnumber condition
+s(tep) 单步执行，步入
+n(ext) 单步执行，步过函数
+c(ont(inue)) 执行直到断点
+l(ist) [first [,last]]
+列出11行附近的代码
+a(rgs)
+打印出当前函数的参数
+p expression
+答应表达式的值
+(!) statement
+执行statement
+whatis arg
+答应 arg 的类型
+q(uit)
+
 书籍名称：Python数据分析与挖掘实战
 
 注:借鉴了该书相关源代码,只用作个人学习使用
