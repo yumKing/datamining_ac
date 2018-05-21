@@ -45,4 +45,4 @@ data_res = data_res.round(2)  # 保留2位小数
 
 data_res = pd.concat([data_res,data.loc[:,'FL']],axis=1)
 
-data_res.to_csv('../data/extract_file/data_extract_fl.csv', index=None)
+data_res.to_csv('../data/extract_file/data_extract_mnb.csv', index=None)
